@@ -174,6 +174,34 @@
                     </div>
                 </div>
 
+                <div class="col-xs-12">
+                    <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Observações</h3>
+
+                        <div class="box-tools">
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <tr>
+                                <th>Descrição</th>
+                                <th>Editar</th>
+                                <th>Apagar</th>
+                            </tr>
+                            <tr>
+                                <td>Reservado para adicionar alguma informação extra, ou advertência registrada ou verbal </td>
+                                <td><a href="#"><i class="fa fa-eye text-success"></i></a></td>
+                                <td><a href="#"><i class="fa fa-close text-danger"></i></a></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+
             </div>
         <!-- /.row -->
 
