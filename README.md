@@ -11,3 +11,14 @@
 <p>UTILIZANDO PARA APRENDIZAGEM</p>
 <p>Sistema administrativo de controle de uma loja, para aprender a utilizar o framework Laravel e treinar o PHP. Apenas para estudos.</p>
 
+<p>Caso utilizar o NGINX</p>
+<p>Configure o arquivo Nginx respectivo</p>
+<p>sudo nano /etc/nginx/sites-available/default </p>
+<br>
+<p>Coloque as linhas abaixo</p>
+<p>root /var/www/html/sbr/ep01/public;</p>
+<p>try_files $uri $uri/ /index.php?$query_string;</p>
+<br>
+<p>Rode a migration </p>
+<p>php artisan migrate </p>
+<p>Após rodar a migration, abra o banco de dados, e crie um usuario na tabela User </p>
