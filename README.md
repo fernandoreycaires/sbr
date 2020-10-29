@@ -16,7 +16,7 @@
 <p>sudo nano /etc/nginx/sites-available/default </p>
 <br>
 <p>Coloque as linhas abaixo</p>
-<p>root /var/www/html/sbr/ep01/public;</p>
+<p>root /var/www/html/sbr/public;</p>
 <p>try_files $uri $uri/ /index.php?$query_string;</p>
 <br>
 <p>Rode a migration </p>
