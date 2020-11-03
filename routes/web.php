@@ -65,3 +65,7 @@ Route::get('/despesas', 'Financeiro\\DespesasController@viewDespesas')->name('de
 
 //INVESTIMENTOS
 Route::get('/investimentos', 'Financeiro\\InvestimentosController@viewInvestimentos')->name('investimentos');
+
+
+//PEDIDOS
+Route::get('/pedidos', 'Pedidos\\PedidosController@viewPedidos')->name('pedidos');

@@ -50,11 +50,24 @@
                     <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
-            <ul class="treeview-menu">
-                <li class=""><a href="{{ route('fechamentos') }}"><i class="fa fa-circle-o"></i> Fechamentos </a></li>
-                <li class=""><a href="{{ route('despesas') }}"><i class="fa fa-circle-o"></i> Despesas </a></li>
-                <li class=""><a href="{{ route('investimentos') }}"><i class="fa fa-circle-o"></i> Investimentos </a></li>
-            </ul>
+                <ul class="treeview-menu">
+                    <li class=""><a href="{{ route('fechamentos') }}"><i class="fa fa-circle-o"></i> Fechamentos </a></li>
+                    <li class=""><a href="{{ route('despesas') }}"><i class="fa fa-circle-o"></i> Despesas </a></li>
+                    <li class=""><a href="{{ route('investimentos') }}"><i class="fa fa-circle-o"></i> Investimentos </a></li>
+                </ul>
+            </li>
+
+            <!-- MENU DOS PEDIDOS -->
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-cart-arrow-down"></i> <span>PEDIDOS</span>
+                    <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class=""><a href="{{ route('pedidos') }}"><i class="fa fa-circle-o"></i> Pedidos </a></li>
+                </ul>
             </li>
         </ul>
     </section>

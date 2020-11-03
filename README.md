@@ -19,6 +19,7 @@
 <p>root /var/www/html/sbr/public;</p>
 <p>try_files $uri $uri/ /index.php?$query_string;</p>
 <br>
+<p>Ajuste a configuração do DB no arquivo .env localizado na raiz </p>
 <p>Rode a migration </p>
 <p>php artisan migrate </p>
 <p>Após rodar a migration, abra o banco de dados, e crie um usuario na tabela User </p>
