@@ -15,7 +15,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Despesas
+                Pedidos
 
                 @if(isset($uriAtual))
                     <small>{{ $uriAtual }}</small>
