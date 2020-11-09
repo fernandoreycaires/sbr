@@ -498,6 +498,7 @@ class ComposerStaticInit9b219c07b8a4da6b17d68e6d181dae23
     public static $classMap = array (
         'App\\Colaborador' => __DIR__ . '/../..' . '/app/Colaborador.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Contrato_Colaborador' => __DIR__ . '/../..' . '/app/Contrato_Colaborador.php',
         'App\\Endereco' => __DIR__ . '/../..' . '/app/Endereco.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -513,6 +514,7 @@ class ComposerStaticInit9b219c07b8a4da6b17d68e6d181dae23
         'App\\Http\\Controllers\\Financeiro\\FechamentosController' => __DIR__ . '/../..' . '/app/Http/Controllers/Financeiro/FechamentosController.php',
         'App\\Http\\Controllers\\Financeiro\\InvestimentosController' => __DIR__ . '/../..' . '/app/Http/Controllers/Financeiro/InvestimentosController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\Pedidos\\PedidosController' => __DIR__ . '/../..' . '/app/Http/Controllers/Pedidos/PedidosController.php',
         'App\\Http\\Controllers\\Perfil\\PerfilController' => __DIR__ . '/../..' . '/app/Http/Controllers/Perfil/PerfilController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',

@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Colaborador' => $baseDir . '/app/Colaborador.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
+    'App\\Contrato_Colaborador' => $baseDir . '/app/Contrato_Colaborador.php',
     'App\\Endereco' => $baseDir . '/app/Endereco.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -23,6 +24,7 @@ return array(
     'App\\Http\\Controllers\\Financeiro\\FechamentosController' => $baseDir . '/app/Http/Controllers/Financeiro/FechamentosController.php',
     'App\\Http\\Controllers\\Financeiro\\InvestimentosController' => $baseDir . '/app/Http/Controllers/Financeiro/InvestimentosController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
+    'App\\Http\\Controllers\\Pedidos\\PedidosController' => $baseDir . '/app/Http/Controllers/Pedidos/PedidosController.php',
     'App\\Http\\Controllers\\Perfil\\PerfilController' => $baseDir . '/app/Http/Controllers/Perfil/PerfilController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
