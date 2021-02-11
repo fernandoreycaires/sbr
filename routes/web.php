@@ -17,7 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+//Auth::routes();
+Auth::routes(['register' => false]); //Este comando desabilita a rota padrão de registro de usuario
 
 Route::get('/home', 'HomeController@index')->name('home');
 
