@@ -67,6 +67,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li class=""><a href="<?php echo e(route('pedidos')); ?>"><i class="fa fa-circle-o"></i> Pedidos </a></li>
+                    <li class=""><a href="<?php echo e(route('produtos')); ?>"><i class="fa fa-circle-o"></i> Cadastrar Produtos  </a></li>
                 </ul>
             </li>
         </ul>

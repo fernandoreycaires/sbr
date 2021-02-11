@@ -69,3 +69,4 @@ Route::get('/investimentos', 'Financeiro\\InvestimentosController@viewInvestimen
 
 //PEDIDOS
 Route::get('/pedidos', 'Pedidos\\PedidosController@viewPedidos')->name('pedidos');
+Route::get('/produtos', 'Pedidos\\PedidosController@viewProdutos')->name('produtos');

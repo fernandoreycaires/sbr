@@ -23,4 +23,13 @@ class PedidosController extends Controller
 
         return view('pedidos.index', compact('user', 'uriAtual'));
     }
+
+    public function viewProdutos()
+    {
+        $user = Auth()->user();
+
+        $uriAtual = $this->request->route()->uri();
+
+        return view('pedidos.produtos', compact('user', 'uriAtual'));
+    }
 }
