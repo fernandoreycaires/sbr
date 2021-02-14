@@ -74,29 +74,59 @@
                     
                     <div class="box box-primary">
                         <div class="box-body box-profile">
-                        <h3 class="profile-username text-center"> Produtos e Linhas Cadastrados</h3>
+                            <h3 class="profile-username text-center"> Produtos e Linhas Cadastrados</h3>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                    
+                    <!--AQUI LISTA AS LINHAS DE PRODUTOS-->
+                    @foreach ($linhas as $linha)
+                    <div class="box box-gray">
+                        <div class="box-body box-profile">
+                        <h3 class="profile-username text-center"> {{ $linha->linha }} - <b> R$ {{ $linha->preco }} <a href="{{ route('produtos.editLinha',['linha' => $linha->id  ]) }}"><i class="fa fa-eye text-success"></i></a> <a href="#" onclick="event.preventDefault(); document.getElementById('deletarLinha{{$linha->id }}').submit();"><i class="fa fa-close text-danger"></i></a> </b></h3>
+                            
+                        <form id="deletarLinha{{$linha->id }}" action="{{route('produtos.delLinha', ['linha' => $linha->id ]) }}" method="post" style="display: none" >
+                            @csrf
+                            @method('delete')
+                            <input type="hidden" name="linha" value="{{ $linha->id }}" >
+                        </form>
+                            
                             <table class="table table-hover">
-                                <!--AQUI LISTA AS LINHAS DE PRODUTOS-->
-                                @foreach ($linhas as $linha)
-                                <tr>
-                                    <td><b>{{ $linha->linha }}</b></td>
-                                    <td><b> R$ {{ $linha->preco }} </b></td>
-                                </tr>
                                 <!-- AQUI LISTA OS PRODUTOS DE DENTRO DAS LINHAS -->
+                                    <tr>
+                                        <th></th>
+                                        <th>Sabores</th>
+                                        <th>Visualizar</th>
+                                        <th>Excluir</th>
+                                    </tr>
                                     @foreach ($sabores as $sabor)
                                         @if ( $sabor->linha == $linha->id )
                                             <tr>
                                                 <td>-</td>
                                                 <td>{{ $sabor->sabor }}</td>
+                                                <td><a href="{{ route('produtos.editProd',['produto' => $sabor->id ]) }}"><i class="fa fa-eye text-success"></i></a> </td>
+                                                <td><a href="#" onclick="event.preventDefault(); document.getElementById('deletarSabor{{$sabor->id }}').submit();"  ><i class="fa fa-close text-danger"></i></a> 
+                                                    
+                                                    <form id="deletarSabor{{$sabor->id }}" action="{{route('produtos.delProd', ['produto' => $sabor->id]) }}" method="post" style="display: none" >
+                                                        @csrf
+                                                        @method('delete')
+                                                        <input type="hidden" name="produto" value="{{ $sabor->id }}" >
+                                                    </form>
+                                                
+                                                
+                                                </td>
                                             </tr>
                                         @endif
                                     @endforeach
-                                @endforeach
+                                
                             </table>
                         </div>
                         <!-- /.box-body -->
                     </div>
                     <!-- /.box -->
+                    @endforeach
+                
                 </div>
             </div>
         <!-- /.row -->

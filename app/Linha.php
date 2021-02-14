@@ -10,6 +10,6 @@ class Linha extends Model
 
     public function sabor()
     {
-        return $this->hasOne(Produto_Sabores::class, 'linha', 'id') ;
+        return $this->hasOne(Sabor::class, 'linha', 'id') ;
     }
 }

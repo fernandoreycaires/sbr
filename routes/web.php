@@ -75,3 +75,7 @@ Route::get('/pedidos', 'Pedidos\\PedidosController@viewPedidos')->name('pedidos'
 Route::get('/produtos', 'Pedidos\\PedidosController@viewProdutos')->name('produtos'); //Cadastrar produtos
 Route::post('/produtos/inserirlinha','Pedidos\\PedidosController@inserirLinha')->name('produtos.inserirLinha');
 Route::post('/produtos/inserirproduto','Pedidos\\PedidosController@inserirProduto')->name('produtos.inserirProduto');
+Route::get('/produtos/{produto}', 'Pedidos\\PedidosController@editProdutos')->name('produtos.editProd'); //Editar produtos
+Route::get('/linha/{linha}', 'Pedidos\\PedidosController@editLinha')->name('produtos.editLinha'); //Editar Linhas de produtos
+Route::delete('/produto/delete/{produto}', 'Pedidos\\PedidosController@delProd')->name('produtos.delProd');
+Route::delete('/linha/delete/{linha}', 'Pedidos\\PedidosController@delLinha')->name('produtos.delLinha'); 

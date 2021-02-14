@@ -61,4 +61,48 @@ class PedidosController extends Controller
         return redirect()->route('produtos');
 
     }
+
+    public function editProdutos(Sabor $produto)
+    {
+        $user = Auth()->user();
+
+        $uriAtual = $this->request->route()->uri();
+
+        $idProduto = $produto->id;
+        
+        $linhas = Linha::all();
+        foreach ($linhas as $linha){
+            
+            if($produto->linha == $linha->id){
+                $linhaProd = $linha->linha;
+            }
+        }
+
+        return view('pedidos.produtosedit', compact('user', 'uriAtual', 'produto', 'linhaProd'));
+    }
+
+    public function editLinha(Linha $linha)
+    {
+        $user = Auth()->user();
+
+        $uriAtual = $this->request->route()->uri();
+
+        $produtos = $linha->sabor()->get();
+        
+        return view('pedidos.linhaedit', compact('user', 'uriAtual', 'linha', 'produtos' ));
+    }
+
+    public function delProd(Sabor $produto)
+    {
+        $produto->delete();
+        
+        return redirect()->route('produtos');
+    }
+
+    public function delLinha(Linha $linha)
+    {
+        $linha->delete();
+        
+        return redirect()->route('produtos');
+    }
 }
