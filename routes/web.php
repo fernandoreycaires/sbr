@@ -70,4 +70,8 @@ Route::get('/investimentos', 'Financeiro\\InvestimentosController@viewInvestimen
 
 //PEDIDOS
 Route::get('/pedidos', 'Pedidos\\PedidosController@viewPedidos')->name('pedidos');
-Route::get('/produtos', 'Pedidos\\PedidosController@viewProdutos')->name('produtos');
+
+//PRODUTOS
+Route::get('/produtos', 'Pedidos\\PedidosController@viewProdutos')->name('produtos'); //Cadastrar produtos
+Route::post('/produtos/inserirlinha','Pedidos\\PedidosController@inserirLinha')->name('produtos.inserirLinha');
+Route::post('/produtos/inserirproduto','Pedidos\\PedidosController@inserirProduto')->name('produtos.inserirProduto');

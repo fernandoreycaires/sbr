@@ -24,7 +24,7 @@
                 <?php endif; ?>
             </h1>
             <ol class="breadcrumb">
-                <li><a href=" <?php echo e(route('pedidos')); ?> "><i class="ion ion-cash"></i> Home</a></li>
+                <li><a href=" <?php echo e(route('pedidos')); ?> "><i class="fa fa-cart-arrow-down"></i> Home</a></li>
                 <li class="active">Página Principal</li>
             </ol>
         </section>
