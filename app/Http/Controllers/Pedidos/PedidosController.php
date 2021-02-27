@@ -23,7 +23,10 @@ class PedidosController extends Controller
 
         $uriAtual = $this->request->route()->uri();
 
-        return view('pedidos.index', compact('user', 'uriAtual'));
+        $linhas = Linha::all();
+        $sabores = Sabor::all();
+
+        return view('pedidos.index', compact('user', 'uriAtual', 'linhas', 'sabores' ));
     }
 
 

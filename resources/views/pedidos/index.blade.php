@@ -13,40 +13,38 @@
                         <h3 class="profile-username text-center"> Catálogo </h3>
 
                         <div class="box">
-                            <div class="box-header">
-                                <h3 class="box-title">Linha Delicia</h3>
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="box-body no-padding">
-                            <table class="table">
-                                <tr>
-                                    <th style="width: 10px"></th>
-                                    <th></th>
-                                    <th style="width: 40px">Estoque</th>
-                                    <th style="width: 40px">Comprar</th>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Mousse de Maracujá: </td>
-                                    <td><input type="number" class="form-control" id="estoque_" ></td>
-                                    <td><input type="number" class="form-control" id="comprar_"></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Abacaxa ao Vinho: </td>
-                                    <td><input type="number" class="form-control" id="estoque_"></td>
-                                    <td><input type="number" class="form-control" id="comprar_"></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Doce de Leite: </td>
-                                    <td><input type="number" class="form-control" id="estoque_"></td>
-                                    <td><input type="number" class="form-control" id="comprar_"></td>
-                                </tr>
 
-                            </table>
-                            </div>
-                            <!-- /.box-body -->
+                            @foreach ($linhas as $linha)
+
+                                <div class="box-header" style="background-color: #e0f0ff ; " >
+                                    <h3 class="box-title"> {{ $linha->linha }} </h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body no-padding">
+                                <table class="table">
+                                        
+                                        <tr>
+                                            <th style="width: 10px"></th>
+                                            <th></th>
+                                            <th style="width: 40px">Estoque</th>
+                                            <th style="width: 40px">Comprar</th>
+                                        </tr>
+                                    
+                                    @foreach ($sabores as $sabor)
+                                        @if ( $sabor->linha == $linha->id )
+                                        <tr>
+                                            <td></td>
+                                            <td>{{ $sabor->sabor }} : </td>
+                                            <td><input type="number" class="form-control" id="estoque_" ></td>
+                                            <td><input type="number" class="form-control" id="comprar_"></td>
+                                        </tr>
+                                        @endif
+                                    @endforeach
+                                </table>
+                                </div>
+                                <!-- /.box-body -->
+                            
+                            @endforeach
                         </div>
                         <!-- /.box -->
                             
