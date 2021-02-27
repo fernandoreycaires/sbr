@@ -61,6 +61,22 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            a:link, a:visited {
+                text-decoration: none;
+                color: #000000;
+            }
+
+            a:hover {
+                text-decoration: underline; 
+                color: black
+                }
+                
+            a:active {
+               text-decoration: none;
+               color: #000000;
+            }
+
         </style>
     </head>
     <body>
@@ -86,10 +102,9 @@
                 <div class="links">
                     <p>SBR Frescores da Vida</p>
                     <a href="https://www.oggisorvetes.com.br" target="_blank">Oggi Sorvetes</a>
-                    <a href="https://www.rappi.com.br/restaurantes/oggi-sorvetes" target="_blank">Rappi</a>
                     <a href="https://www.ifood.com.br/delivery/sao-paulo-sp/oggi-sorvetes-santana-santana/f43996aa-2c82-4ce0-b007-7e06b01d6c6f" target="_blank">Ifood</a>
                     <a href="https://www.ubereats.com/br/sao-paulo/food-delivery/oggi-sorvetes-santana/tmhjZvI_Tx-OLFIwcL4FLA" target="_blank">UberEats</a>
-                    <p>Rua Francisca Julia, 43, Santana - São Paulo - SP </p>
+                    <p><a href="https://www.google.com/maps/place/R.+Francisca+J%C3%BAlia,+43+-+Santana,+S%C3%A3o+Paulo+-+SP,+02403-010/@-23.4945711,-46.6284891,17z/data=!3m1!4b1!4m5!3m4!1s0x94cef6316ef737d9:0xb53eeacd3397849e!8m2!3d-23.4945711!4d-46.6263004" >Rua Francisca Julia, 43, Santana - São Paulo - SP </a></p>
                     <p>CEP: 02403-010</p>
                     <p>Tel / Whatts: +55 (11) 2959-9722 </p>
                 </div>
