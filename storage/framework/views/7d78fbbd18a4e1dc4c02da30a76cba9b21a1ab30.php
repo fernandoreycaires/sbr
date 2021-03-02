@@ -2,75 +2,69 @@
 
     <!-- Main content -->
     <section class="content">
-            <!-- Small boxes (Stat box) -->
-            <div class="row">
-                <div class="col-md-6">
-                    <!-- Profile Image -->
-                    <div class="box box-primary">
-                        <div class="box-body box-profile">
-                        <h3 class="profile-username text-center"> Catálogo </h3>
-
-                        <div class="box">
-
-                            <?php $__currentLoopData = $linhas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $linha): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
-                                <div class="box-header" style="background-color: #e0f0ff ; " >
-                                    <h3 class="box-title"> <?php echo e($linha->linha); ?> </h3>
-                                </div>
-                                <!-- /.box-header -->
-                                <div class="box-body no-padding">
-                                <table class="table">
-                                        
-                                        <tr>
-                                            <th style="width: 10px"></th>
-                                            <th></th>
-                                            <th style="width: 40px">Estoque</th>
-                                            <th style="width: 40px">Comprar</th>
-                                        </tr>
-                                    
-                                    <?php $__currentLoopData = $sabores; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sabor): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <?php if( $sabor->linha == $linha->id ): ?>
-                                        <tr>
-                                            <td></td>
-                                            <td><?php echo e($sabor->sabor); ?> : </td>
-                                            <td><input type="number" class="form-control" id="estoque_" ></td>
-                                            <td><input type="number" class="form-control" id="comprar_"></td>
-                                        </tr>
-                                        <?php endif; ?>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                </table>
-                                </div>
-                                <!-- /.box-body -->
-                            
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        </div>
-                        <!-- /.box -->
-                            
-
-                        <!-- /.box-body -->
+             <!-- /.row -->
+             <div class="row">
+                <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                    <h3 class="box-title">Lista de Pedidos</h3>
                         <div class="box-footer">
-                            <a href="#" class="pull-right btn btn-success"> Salvar <i class="fa fa-check"></i></a>
+                            <a href="#" class="btn btn-info pull-right" onclick="event.preventDefault(); document.getElementById('abrirNovoPedido').submit();" >Novo</a>
+                                <form id="abrirNovoPedido" action=" <?php echo e(route('pedidos.novoPedido')); ?> " method="post" style="display: none" >
+                                    <?php echo csrf_field(); ?>
+                                    <input type="hidden" name="status" value="Aberto" >
+                                </form>
                         </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>Pedido</th>
+                            <th>Status</th>
+                            <th>Qtd de Volumes</th>
+                            <th>Dia / Hora</th>
+                            <th>Valor</th>
+                            <th>Numero Ped. Oggi</th>
+                            <th>Visualizar</th>
+                            <th>Editar</th>
+                            <th>Remover</th>
+                        </tr>
+                        
+                        <?php $__currentLoopData = $listaPedidos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $listaPedido): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            
+                            <?php if($listaPedido->status == 'Aberto'): ?>
+                                <div class="hidden"><?php echo e($status_cor = "bg-green"); ?></div>
+                            <?php elseif($listaPedido->status == 'Fechado'): ?>
+                                <div class="hidden"><?php echo e($status_cor = "bg-red"); ?></div>
+                            <?php endif; ?>
 
-                        <!-- /.box-footer -->
-                        </div>
-                        <!-- /.box-body -->
+                        <tr>    
+                            <td><?php echo e($listaPedido->id); ?></td>
+                            <td><span class="badge <?php echo e($status_cor); ?>"> <?php echo e($listaPedido->status); ?> </span></td>
+                            <td> 200 Vol. </td>
+                            <td><?php echo e(date('d/m/Y - H:m:s', strtotime($listaPedido->created_at))); ?></td>
+                            <td> R$ 000,00 </td>
+                            <td> #<?php echo e($listaPedido->num_pedidos_oggi); ?> </td>
+                            <td> <a href="#"><i class="fa fa-eye text-primary"></i> </a> </td>
+                            <td> <a href="#"><i class="fa fa-edit text-success"></i> </a> </td>
+                            <td> <a href="#" onclick="event.preventDefault(); document.getElementById('deletar<?php echo e($listaPedido->id); ?>').submit();"><i class="fa fa-window-close text-danger" ></i> </a> 
+                                <form id="deletar<?php echo e($listaPedido->id); ?>" action=" <?php echo e(route('pedidos.deletePedido', ['pedido' => $listaPedido->id])); ?> " method="post" style="display: none" >
+                                    <?php echo csrf_field(); ?>
+                                    <?php echo method_field('delete'); ?>
+                                    <input type="hidden" name="deletePedido" value="<?php echo e($listaPedido->id); ?>" >
+                                </form>
+                            </td>
+                        </tr>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        
+                    </table>
                     </div>
-                    <!-- /.box -->
+                    <!-- /.box-body -->
                 </div>
-                <div class="col-md-6">
-                    <!-- Profile Image -->
-                    <div class="box box-primary">
-                        <div class="box-body box-profile">
-                        <h3 class="profile-username text-center"> Lista de Pedidos </h3>
-                            <p>Teste de lado direito onde será listado os pedidos</p>
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-                    <!-- /.box -->
+                <!-- /.box -->
                 </div>
             </div>
-        <!-- /.row -->
 
     </section>
     <!-- /.content -->

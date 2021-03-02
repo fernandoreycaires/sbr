@@ -15,13 +15,10 @@ class CreatePedidosTable extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('sabor');
-            $table->unsignedBigInteger('qtd_estoque');
-            $table->unsignedBigInteger('qtd_solicitado');
-            $table->unsignedBigInteger('qtd_liberado');
+            $table->string('status');
+            $table->string('num_pedidos_oggi')->nullable();
             $table->timestamps();
 
-            $table->foreign('sabor')->references('id')->on('produto_sabores');
         });
     }
 

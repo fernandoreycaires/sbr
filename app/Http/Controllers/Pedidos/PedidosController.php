@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pedidos;
 
 use App\Http\Controllers\Controller;
 use App\Linha;
+use App\Pedido;
 use App\Sabor;
 use Illuminate\Http\Request;
 
@@ -17,20 +18,8 @@ class PedidosController extends Controller
         $this->request = $request;
     }
 
-    public function viewPedidos()
-    {
-        $user = Auth()->user();
-
-        $uriAtual = $this->request->route()->uri();
-
-        $linhas = Linha::all();
-        $sabores = Sabor::all();
-
-        return view('pedidos.index', compact('user', 'uriAtual', 'linhas', 'sabores' ));
-    }
-
-
     // PRODUTOS
+
     public function viewProdutos()
     {
         $user = Auth()->user();
@@ -39,10 +28,10 @@ class PedidosController extends Controller
 
         $linhas = Linha::all();
         $sabores = Sabor::all();
-        
+                
         return view('pedidos.produtos', compact('user', 'uriAtual', 'linhas', 'sabores'));
     }
-
+    
     public function inserirLinha(Request $request)
     {
         $linha = new Linha();
@@ -107,5 +96,57 @@ class PedidosController extends Controller
         $linha->delete();
         
         return redirect()->route('produtos');
+    }
+
+    // PEDIDOS
+
+    public function viewPedidos()
+    {
+        $user = Auth()->user();
+
+        $uriAtual = $this->request->route()->uri();
+
+        $pedidos = Pedido::all();
+
+        //este metodo é para ordenar em modo decrescente, procurar na documentação por sotBy(), link no comentario abaixo
+        //https://laravel.com/docs/5.8/collections#method-sortby
+        $listaPedidos = $pedidos->sortByDesc('id'); 
+        $listaPedidos->values()->all();
+
+        return view('pedidos.index', compact('user', 'uriAtual', 'listaPedidos' ));
+    }
+    
+
+    public function novoPedido(Request $request)
+    {
+
+        $pedido = new Pedido();
+        $pedido->status = $request->status;
+        $pedido->save();
+
+        return redirect()->route('pedidos.novoItemPedido');
+    }
+
+    public function novoItemPedido()
+    {
+
+        $user = Auth()->user();
+        $uriAtual = $this->request->route()->uri();
+
+        $pegarTodosPedidos = Pedido::all();
+        $pegarUltimoPedidoInserido = $pegarTodosPedidos->last();
+
+        $linhas = Linha::all();
+        $sabores = Sabor::all();
+
+
+        return view('pedidos.pedidoNew', compact('user', 'uriAtual', 'pegarUltimoPedidoInserido', 'linhas', 'sabores'));
+    }
+
+    public function deletePedido(Pedido $pedido)
+    {
+        $pedido->delete();
+        
+        return redirect()->route('pedidos');
     }
 }
