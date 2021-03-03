@@ -17,6 +17,7 @@ class CreatePedidosTable extends Migration
             $table->id();
             $table->string('status');
             $table->string('num_pedidos_oggi')->nullable();
+            $table->text('observacao')->nullable();
             $table->timestamps();
 
         });

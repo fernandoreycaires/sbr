@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Pedidos;
 use App\Http\Controllers\Controller;
 use App\Linha;
 use App\Pedido;
+use App\Pedido_Item;
 use App\Sabor;
 use Illuminate\Http\Request;
 
@@ -141,6 +142,33 @@ class PedidosController extends Controller
 
 
         return view('pedidos.pedidoNew', compact('user', 'uriAtual', 'pegarUltimoPedidoInserido', 'linhas', 'sabores'));
+    }
+    
+    public function inserirProdutos(Request $request)
+    {
+        //Foi muuuito dificil aprender essa parte sozinho, MAASS eu consegui !!!!
+        //Esta parte é a inserção de Itens na tabela Pedido_Itens
+
+        $contador = $request->i;
+                
+        for ($i = 0; $i < $contador; $i++){
+
+            $produto = new Pedido_Item();
+            $produto->pedido = $request->num_pedido[$i];
+            $produto->linha = $request->num_linha[$i];
+            $produto->nome_linha = $request->nome_linha[$i];
+            $produto->produto = $request->num_produto[$i];
+            $produto->nome_produto = $request->nome_produto[$i];
+            $produto->valor = $request->valor[$i];
+            $produto->qtd_estoque = $request->qtd_estoque[$i];
+            $produto->qtd_solicitado = $request->qtd_comprar[$i];
+
+            
+            $produto->save();
+            
+        } 
+
+        return redirect()->route('pedidos');
     }
 
     public function deletePedido(Pedido $pedido)

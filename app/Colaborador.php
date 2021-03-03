@@ -10,7 +10,7 @@ class Colaborador extends Model
 
     public function endereco()
     {
-    //                       tabela            foreignKey     Chave Local
+    //                       tabela            foreignKey     Chave da tabela estrangeira
         return $this->hasOne(Endereco::class, 'colaborador', 'id') ;
     }
 

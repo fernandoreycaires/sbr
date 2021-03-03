@@ -17,15 +17,16 @@ class CreatePedidoItensTable extends Migration
             $table->id();
             $table->unsignedBigInteger('pedido');
             $table->unsignedBigInteger('linha');
+            $table->string('nome_linha');
             $table->unsignedBigInteger('produto');
+            $table->string('nome_produto');
+            $table->string('valor');
             $table->unsignedBigInteger('qtd_estoque')->nullable();
             $table->unsignedBigInteger('qtd_solicitado')->nullable();
             $table->unsignedBigInteger('qtd_liberado')->nullable();
             $table->timestamps();
 
             $table->foreign('pedido')->references('id')->on('pedidos')->onDelete('CASCADE');
-            $table->foreign('linha')->references('id')->on('produto_linhas');
-            $table->foreign('produto')->references('id')->on('produto_sabores');
         });
     }
 
