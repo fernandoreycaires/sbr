@@ -2,7 +2,7 @@
 
 <!-- Main content -->
 <section class="content">
-      <p>Tela inicial, se eu tiver saco programo algo para aparecer aqui ..!!..!! </p>
+      <p>Em processo de desenvolvimento ...  </p>
 
 </section>
   <!-- /.content -->
