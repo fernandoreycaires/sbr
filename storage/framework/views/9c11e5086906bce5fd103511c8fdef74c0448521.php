@@ -24,15 +24,15 @@
                             <div class="form-group">
                                 <label for="inputSalario" class="col-sm-3 control-label">Salário R$</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputSalario" name="inputSalario" placeholder="Somente números">
+                                    <input type="number" step="0.01" class="form-control" id="inputSalario" name="inputSalario" placeholder="Somente números">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="inputCarga" class="col-sm-3 control-label">Carga Horária</label>
+                                <label for="inputCarga" class="col-sm-3 control-label" >Carga Horária</label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputCarga" name="inputCarga" placeholder="ex: 48 Horas Semanais ...">
+                                    <input type="text" class="form-control" id="inputCarga" value="48 Horas Semanais" name="inputCarga" placeholder="ex: 48 Horas Semanais ...">
                                 </div>
                             </div>
 
@@ -40,7 +40,7 @@
                                 <label for="inputOcupacao" class="col-sm-3 control-label">Ocupação</label>
 
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputOcupacao" name="inputOcupacao" placeholder="Gerente/ Caixa/ Faxina ...">
+                                    <input type="text" class="form-control" id="inputOcupacao" value="Gerente/ Caixa/ Faxina ..." name="inputOcupacao" placeholder="Gerente/ Caixa/ Faxina ...">
                                 </div>
                             </div>
 

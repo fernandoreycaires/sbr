@@ -23,8 +23,8 @@
                             <th>Pedido</th>
                             <th>Status</th>
                             <th>Qtd de Volumes</th>
+                            <th>Valor Solicitado</th>
                             <th>Dia / Hora</th>
-                            <th>Valor</th>
                             <th>Numero Ped. Oggi</th>
                             <th>Visualizar</th>
                             <th>Editar</th>
@@ -39,23 +39,24 @@
                                 <div class="hidden"><?php echo e($status_cor = "bg-red"); ?></div>
                             <?php endif; ?>
 
-                        <tr>    
-                            <td><?php echo e($listaPedido->id); ?></td>
-                            <td><span class="badge <?php echo e($status_cor); ?>"> <?php echo e($listaPedido->status); ?> </span></td>
-                            <td> 200 Vol. </td>
-                            <td><?php echo e(date('d/m/Y - H:m:s', strtotime($listaPedido->created_at))); ?></td>
-                            <td> R$ 000,00 </td>
-                            <td> #<?php echo e($listaPedido->num_pedidos_oggi); ?> </td>
-                            <td> <a href="#"><i class="fa fa-eye text-primary"></i> </a> </td>
-                            <td> <a href="#"><i class="fa fa-edit text-success"></i> </a> </td>
-                            <td> <a href="#" onclick="event.preventDefault(); document.getElementById('deletar<?php echo e($listaPedido->id); ?>').submit();"><i class="fa fa-window-close text-danger" ></i> </a> 
-                                <form id="deletar<?php echo e($listaPedido->id); ?>" action=" <?php echo e(route('pedidos.deletePedido', ['pedido' => $listaPedido->id])); ?> " method="post" style="display: none" >
-                                    <?php echo csrf_field(); ?>
-                                    <?php echo method_field('delete'); ?>
-                                    <input type="hidden" name="deletePedido" value="<?php echo e($listaPedido->id); ?>" >
-                                </form>
-                            </td>
-                        </tr>
+                            <tr>    
+                                <td><?php echo e($listaPedido->id); ?></td>
+                                <td><span class="badge <?php echo e($status_cor); ?>"> <?php echo e($listaPedido->status); ?> </span></td>
+                                <td> <?php echo e($listaPedido->volume_solicitado); ?> Vol. </td>
+                                <td> R$ <?php echo e($listaPedido->valor_solicitado); ?> </td>
+                                <td><?php echo e(date('d/m/Y - H:m:s', strtotime($listaPedido->created_at))); ?></td>
+                                <td> #<?php echo e($listaPedido->num_pedidos_oggi); ?> </td>
+                                <td> <a href="#"><i class="fa fa-eye text-primary"></i> </a> </td>
+                                <td> <a href="#"><i class="fa fa-edit text-success"></i> </a> </td>
+                                <td> <a href="#" onclick="event.preventDefault(); document.getElementById('deletar<?php echo e($listaPedido->id); ?>').submit();"><i class="fa fa-window-close text-danger" ></i> </a> 
+                                    <form id="deletar<?php echo e($listaPedido->id); ?>" action=" <?php echo e(route('pedidos.deletePedido', ['pedido' => $listaPedido->id])); ?> " method="post" style="display: none" >
+                                        <?php echo csrf_field(); ?>
+                                        <?php echo method_field('delete'); ?>
+                                        <input type="hidden" name="deletePedido" value="<?php echo e($listaPedido->id); ?>" >
+                                    </form>
+                                </td>
+                            </tr>
+                            
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         
                     </table>

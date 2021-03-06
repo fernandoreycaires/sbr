@@ -25,7 +25,7 @@
                                         </tr>
                                         <tr>
                                             <td><input class="form-control" name="linha" type="text" placeholder="Nova Linha"></td>
-                                            <td><input class="form-control" name="valor" type="text" placeholder="Valor"></td>
+                                            <td><input class="form-control" name="valor" type="number" step="0.01" placeholder="Valor"></td>
                                             <td><button type="submit" class="badge bg-green no-border"><i class="fa fa-check"></i></button></td>
                                         </tr>
                                         

@@ -16,7 +16,7 @@ class CreateContratosColaboradoresTable extends Migration
         Schema::create('contratos_colaboradores', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('colaborador');
-            $table->string('salario');
+            $table->float('salario', 8, 2);
             $table->string('carga_horaria');
             $table->string('ocupacao');
             $table->enum('status', ['ativo', 'inativo']);

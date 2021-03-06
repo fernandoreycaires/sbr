@@ -20,10 +20,12 @@ class CreatePedidoItensTable extends Migration
             $table->string('nome_linha');
             $table->unsignedBigInteger('produto');
             $table->string('nome_produto');
-            $table->string('valor');
+            $table->float('valor', 8, 2);
             $table->unsignedBigInteger('qtd_estoque')->nullable();
             $table->unsignedBigInteger('qtd_solicitado')->nullable();
+            $table->float('valor_total_solicitado', 8, 2)->nullable();
             $table->unsignedBigInteger('qtd_liberado')->nullable();
+            $table->float('valor_total_liberado', 8, 2)->nullable();
             $table->timestamps();
 
             $table->foreign('pedido')->references('id')->on('pedidos')->onDelete('CASCADE');

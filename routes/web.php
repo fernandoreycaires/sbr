@@ -72,7 +72,7 @@ Route::get('/investimentos', 'Financeiro\\InvestimentosController@viewInvestimen
 Route::get('/pedidos', 'Pedidos\\PedidosController@viewPedidos')->name('pedidos'); //Esta rota lista os pedidos 
 Route::post('/pedidos/novopedido', 'Pedidos\\PedidosController@novoPedido')->name('pedidos.novoPedido'); //Cria novo pedido 
 Route::get('/pedidos/novoitempedido', 'Pedidos\\PedidosController@novoItemPedido')->name('pedidos.novoItemPedido'); //Entra na tela de inserir itens no pedido 
-Route::post('/pedidos/novoitempedido/inserirprodutos', 'Pedidos\\PedidosController@inserirProdutos')->name('pedidos.novoItemPedido.inserirProdutos'); //Insere produtos no pedido 
+Route::put('/pedidos/novoitempedido/inserirprodutos/{pedido}', 'Pedidos\\PedidosController@inserirProdutos')->name('pedidos.novoItemPedido.inserirProdutos'); //Insere produtos no pedido 
 Route::delete('/pedidos/deletarpedido/{pedido}', 'Pedidos\\PedidosController@deletePedido')->name('pedidos.deletePedido'); //Deleta pedido 
 
 //PRODUTOS

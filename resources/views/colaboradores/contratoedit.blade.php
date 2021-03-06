@@ -27,7 +27,7 @@
                             <div class="form-group">
                                 <label for="inputSalario" class="col-sm-3 control-label">Salário R$</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="inputSalario" name="inputSalario" placeholder="Somente números" value="{{ $contratos->salario }}">
+                                    <input type="number" step="0.01" class="form-control" id="inputSalario" name="inputSalario" placeholder="Somente números" value="{{ $contratos->salario }}">
                                 </div>
                             </div>
 

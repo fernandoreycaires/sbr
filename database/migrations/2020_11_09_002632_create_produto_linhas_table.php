@@ -16,7 +16,7 @@ class CreateProdutoLinhasTable extends Migration
         Schema::create('produto_linhas', function (Blueprint $table) {
             $table->id();
             $table->string('linha');
-            $table->string('preco');
+            $table->float('preco', 8, 2);
             $table->timestamps();
         });
     }

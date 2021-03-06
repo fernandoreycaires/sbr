@@ -107,14 +107,21 @@ class PedidosController extends Controller
 
         $uriAtual = $this->request->route()->uri();
 
-        $pedidos = Pedido::all();
+        $pedidos = Pedido::all(); //Busca os Pedidos 
 
-        //este metodo é para ordenar em modo decrescente, procurar na documentação por sotBy(), link no comentario abaixo
+        //este metodo abaixo é para ordenar em modo decrescente, procurar na documentação por sotBy(), link no comentario abaixo
         //https://laravel.com/docs/5.8/collections#method-sortby
         $listaPedidos = $pedidos->sortByDesc('id'); 
         $listaPedidos->values()->all();
 
-        return view('pedidos.index', compact('user', 'uriAtual', 'listaPedidos' ));
+        
+        //Exemplo de soma  (Funciona mas não vai servir neste caso)
+        //$sum = Model::where('status', 'paid')->sum('sum_field');
+        //Exemplo funcional, de um dd na variavel "$soma_qtd_solicitado " abaixo 
+        //$pedido_itens = Pedido_Item::all(); // Busca os itens do pedido
+        //$soma_qtd_solicitado = Pedido_Item::where('pedido', '15')->sum('qtd_solicitado');
+        
+        return view('pedidos.index', compact('user', 'uriAtual', 'listaPedidos'));
     }
     
 
@@ -144,13 +151,15 @@ class PedidosController extends Controller
         return view('pedidos.pedidoNew', compact('user', 'uriAtual', 'pegarUltimoPedidoInserido', 'linhas', 'sabores'));
     }
     
-    public function inserirProdutos(Request $request)
+    public function inserirProdutos(Pedido $pedido,Request $request)
     {
         //Foi muuuito dificil aprender essa parte sozinho, MAASS eu consegui !!!!
         //Esta parte é a inserção de Itens na tabela Pedido_Itens
 
         $contador = $request->i;
-                
+        $valor_final = 0;
+        $volume_final = 0;
+        
         for ($i = 0; $i < $contador; $i++){
 
             $produto = new Pedido_Item();
@@ -162,12 +171,23 @@ class PedidosController extends Controller
             $produto->valor = $request->valor[$i];
             $produto->qtd_estoque = $request->qtd_estoque[$i];
             $produto->qtd_solicitado = $request->qtd_comprar[$i];
-
+            $produto->valor_total_solicitado = $request->valor[$i] * $request->qtd_comprar[$i]; //Aqui é feito o calculo do valor total de cada sabor solicitado 
+            
+            $somando_valor = $produto->valor_total_solicitado; //Aqui é armazenado o valor do calculo do pedido do produto
+            $somando_volume = $produto->qtd_solicitado; //Aqui é armazenado o valor da quantidade solicitada de cada volume
             
             $produto->save();
             
+            $volume_final  += $somando_volume; // aqui é feito a soma das quantidades de cada volume ao final de cada loop e armazenada na variavel
+            $valor_final += $somando_valor ; //aqui é feito a soma do valor do pedido de cado produto ao final de cada loop feito e armazenada na variavel
+
         } 
 
+        //Aqui é feito a edição na tabela Pedidos para a inserção do valor "solicitado" total e quantidade de volumes total do pedido 
+        $pedido->valor_solicitado = $valor_final ;
+        $pedido->volume_solicitado = $volume_final;
+        $pedido->save();
+        
         return redirect()->route('pedidos');
     }
 

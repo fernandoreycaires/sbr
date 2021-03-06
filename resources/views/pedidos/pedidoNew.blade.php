@@ -13,8 +13,9 @@
                         <h2 class="profile-username text-center"> # Pedido {{ $pegarUltimoPedidoInserido->id }} </h2>
                         <h3 class="profile-username text-center"> Catálogo </h3>
                         
-                        <form action="{{ route('pedidos.novoItemPedido.inserirProdutos') }}" method="post">  
+                        <form action="{{ route('pedidos.novoItemPedido.inserirProdutos',['pedido' => $pegarUltimoPedidoInserido->id ]) }}" method="post">  
                         @csrf
+                        @method('PUT')
                         
                             <div class="box">
                                 @foreach ($linhas as $linha)
@@ -31,7 +32,7 @@
                                                 <th style="width: 40px">Comprar</th>
                                             </tr>
                                         
-                                            <?php $i=0; ?>                                        
+                                            <?php $i=0; ?> <!-- Esta sendo usado somente para fazer a contagem da quantidade de loops o foreach vai fazer, para poder processar os dados no Controller -->                                       
                                         @foreach ($sabores as $sabor)
                                             <?php $i++; ?>
                                                                                            
@@ -45,7 +46,7 @@
                                                     <input type="hidden" name="valor[]" value="{{$linha->preco}}"> <!-- Pega o preço da linha para adicionar individualmente ao sabor-->
                                                     
                                                     <tr>
-                                                        <td>{{$i}}</td>
+                                                        <td></td>
                                                         <td>{{ $sabor->sabor }} : </td>
                                                         <td><input type="number" class="form-control" name="qtd_estoque[]" ></td>
                                                         <td><input type="number" class="form-control" name="qtd_comprar[]"></td> 

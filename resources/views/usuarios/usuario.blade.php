@@ -13,8 +13,6 @@
                     <div class="box-body box-profile">
                         <h3 class="profile-username text-center"> {{ $usuario->name }} </h3>
 
-                        <p class="text-muted text-center">Software Engineer</p>
-
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
                                 <b>Adicionado em</b> <a class="pull-right">{{ date('d/m/Y H:i', strtotime($usuario->created_at)) }}</a>
