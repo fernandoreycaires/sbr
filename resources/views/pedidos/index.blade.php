@@ -29,7 +29,6 @@
                             <th>Dia / Hora</th>
                             <th>Numero Ped. Oggi</th>
                             <th>Visualizar</th>
-                            <th>Editar</th>
                             <th>Remover</th>
                         </tr>
                         
@@ -38,7 +37,7 @@
                             @if ($listaPedido->status == 'Aberto')
                                 <div class="hidden">{{$status_cor = "bg-green"}}</div>
                             @elseif ($listaPedido->status == 'Fechado')
-                                <div class="hidden">{{$status_cor = "bg-red"}}</div>
+                                <div class="hidden">{{$status_cor = "bg-blue"}}</div>
                             @endif
 
                             <tr>    
@@ -48,8 +47,7 @@
                                 <td> R$ {{ $listaPedido->valor_solicitado }} </td>
                                 <td>{{ date('d/m/Y - H:m:s', strtotime($listaPedido->created_at))  }}</td>
                                 <td> #{{ $listaPedido->num_pedidos_oggi }} </td>
-                                <td> <a href="#"><i class="fa fa-eye text-primary"></i> </a> </td>
-                                <td> <a href="#"><i class="fa fa-edit text-success"></i> </a> </td>
+                                <td> <a href="{{ route('pedidos.visualizarPedido', ['pedido' => $listaPedido->id]) }} "><i class="fa fa-eye text-primary"></i> </a> </td>
                                 <td> <a href="#" onclick="event.preventDefault(); document.getElementById('deletar{{$listaPedido->id}}').submit();"><i class="fa fa-window-close text-danger" ></i> </a> 
                                     <form id="deletar{{$listaPedido->id}}" action=" {{ route('pedidos.deletePedido', ['pedido' => $listaPedido->id]) }} " method="post" style="display: none" >
                                         @csrf

@@ -191,6 +191,34 @@ class PedidosController extends Controller
         return redirect()->route('pedidos');
     }
 
+    //AQUI VISUALIZA O PEDIDO
+    public function visualizarPedido(Pedido $pedido)
+    {
+        $user = Auth()->user();
+
+        $uriAtual = $this->request->route()->uri();
+
+        $itensDoPedido = $pedido->itens()->get();
+
+        //dd($itensDoPedido);
+        
+        return view('pedidos.pedidoView', compact('user', 'uriAtual', 'listaPedidos', 'pedido', 'itensDoPedido'));
+    }
+
+    //AQUI IMPRIME O PEDIDO
+    public function visualizarPedidoPrint(Pedido $pedido)
+    {
+        $user = Auth()->user();
+
+        $uriAtual = $this->request->route()->uri();
+
+        $itensDoPedido = $pedido->itens()->get();
+
+        //dd($itensDoPedido);
+        
+        return view('pedidos.pedidoViewPrint', compact('user', 'uriAtual', 'listaPedidos', 'pedido', 'itensDoPedido'));
+    }
+
     public function deletePedido(Pedido $pedido)
     {
         $pedido->delete();

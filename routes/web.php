@@ -74,6 +74,8 @@ Route::post('/pedidos/novopedido', 'Pedidos\\PedidosController@novoPedido')->nam
 Route::get('/pedidos/novoitempedido', 'Pedidos\\PedidosController@novoItemPedido')->name('pedidos.novoItemPedido'); //Entra na tela de inserir itens no pedido 
 Route::put('/pedidos/novoitempedido/inserirprodutos/{pedido}', 'Pedidos\\PedidosController@inserirProdutos')->name('pedidos.novoItemPedido.inserirProdutos'); //Insere produtos no pedido 
 Route::delete('/pedidos/deletarpedido/{pedido}', 'Pedidos\\PedidosController@deletePedido')->name('pedidos.deletePedido'); //Deleta pedido 
+Route::get('/pedidos/visualizarpedido/{pedido}', 'Pedidos\\PedidosController@visualizarPedido')->name('pedidos.visualizarPedido'); //Entra na tela de visualizar o pedido 
+Route::get('/pedidos/visualizarpedidoPrint/{pedido}', 'Pedidos\\PedidosController@visualizarPedidoPrint')->name('pedidos.visualizarPedidoPrint'); //Imprime o pedido 
 
 //PRODUTOS
 Route::get('/produtos', 'Pedidos\\PedidosController@viewProdutos')->name('produtos'); //Cadastrar produtos
