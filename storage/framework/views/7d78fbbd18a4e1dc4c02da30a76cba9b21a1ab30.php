@@ -44,7 +44,7 @@
                                 <td> <?php echo e($listaPedido->volume_solicitado); ?> Vol. </td>
                                 <td> R$ <?php echo e($listaPedido->valor_solicitado); ?> </td>
                                 <td><?php echo e(date('d/m/Y - H:m:s', strtotime($listaPedido->created_at))); ?></td>
-                                <td> #<?php echo e($listaPedido->num_pedidos_oggi); ?> </td>
+                                <td> # <?php echo e($listaPedido->num_pedido_oggi); ?> </td>
                                 <td> <a href="<?php echo e(route('pedidos.visualizarPedido', ['pedido' => $listaPedido->id])); ?> "><i class="fa fa-eye text-primary"></i> </a> </td>
                                 <td> <a href="#" onclick="event.preventDefault(); document.getElementById('deletar<?php echo e($listaPedido->id); ?>').submit();"><i class="fa fa-window-close text-danger" ></i> </a> 
                                     <form id="deletar<?php echo e($listaPedido->id); ?>" action=" <?php echo e(route('pedidos.deletePedido', ['pedido' => $listaPedido->id])); ?> " method="post" style="display: none" >
