@@ -71,12 +71,17 @@
         <!-- /.row -->
   
         <div class="row">
-          <!-- accepted payments column -->
+          <!-- Observation column -->
           <div class="col-xs-6">
-  
+            
+            <h4>Observações</h4>
             <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
                 O valor total (R$) e quantidades liberadas não correspondem ao que será de fato recebido, tudo depende do estoque no dia do faturamento da nota para entrega.
-
+            </p>
+            
+            <p class="text-muted well no-shadow" style="margin-top: 10px;">
+              
+              {{ $pedido->observacao }}
             </p>
           </div>
           <!-- /.col -->
@@ -111,7 +116,7 @@
             <div class="col-xs-12">
                 <a href="{{ route('pedidos') }}" class="btn btn-primary "><i class="fa fa-angle-left"></i> Voltar</a>
                 <a href="{{ route('pedidos.visualizarPedidoPrint', ['pedido' => $pedido->id]) }}" target="_blank" class="btn btn-default pull-right" ><i class="fa fa-print"></i> Print</a>
-                <a href="#" class="btn btn-success pull-right" style="margin-right: 10px;"><i class="fa fa-edit "></i> Editar</a>
+                <a href="{{ route('pedidos.editaPedido', ['pedido' => $pedido->id]) }}" class="btn btn-success pull-right" style="margin-right: 10px;"><i class="fa fa-edit "></i> Editar</a>
             </div>
         </div>
       </section>

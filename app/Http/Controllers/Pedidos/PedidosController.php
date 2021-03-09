@@ -202,7 +202,7 @@ class PedidosController extends Controller
 
         //dd($itensDoPedido);
         
-        return view('pedidos.pedidoView', compact('user', 'uriAtual', 'listaPedidos', 'pedido', 'itensDoPedido'));
+        return view('pedidos.pedidoView', compact('user', 'uriAtual', 'pedido', 'itensDoPedido'));
     }
 
     //AQUI IMPRIME O PEDIDO
@@ -213,10 +213,58 @@ class PedidosController extends Controller
         $uriAtual = $this->request->route()->uri();
 
         $itensDoPedido = $pedido->itens()->get();
+        
+        return view('pedidos.pedidoViewPrint', compact('user', 'uriAtual', 'pedido', 'itensDoPedido'));
+    }
+
+    //AQUI MOSTRA TELA QUE EDITA O PEDIDO
+    public function editaPedido(Pedido $pedido)
+    {
+        $user = Auth()->user();
+
+        $uriAtual = $this->request->route()->uri();
+
+        $itensDoPedido = $pedido->itens()->get();
 
         //dd($itensDoPedido);
-        
-        return view('pedidos.pedidoViewPrint', compact('user', 'uriAtual', 'listaPedidos', 'pedido', 'itensDoPedido'));
+
+        return view('pedidos.pedidoEdit', compact('user', 'uriAtual', 'pedido', 'itensDoPedido'));
+    }
+
+    //AQUI EDITA O PEDIDO E OS ITENS PARA INSERIR OS VALORES E ITENS LIBERADOS PELO OGGI
+    public function editaPedidoDb(Pedido $pedido, Request $request)
+    {
+                
+        $somando_valor = 0;
+        $somando_volume = 0;
+        $valor_final = 0;
+        $volume_final = 0;
+                
+        for ($i = 0; $i < $request->contador; $i++){
+            
+            $itensDoPedido = Pedido_Item::where('id', $request->id_item[$i])->first(); //Aqui instancia os Itens do pedido
+            $itensDoPedido->qtd_liberado = $request->qtd_lib[$i];
+            $itensDoPedido->valor_total_liberado = $request->valor[$i] * $request->qtd_lib[$i]; //Aqui é feito o calculo do valor total de cada item liberado 
+            
+            $somando_valor = $itensDoPedido->valor_total_liberado; //Aqui é armazenado o valor do calculo do pedido do produto
+            $somando_volume = $itensDoPedido->qtd_liberado; //Aqui é armazenado o valor da quantidade solicitada de cada volume
+            
+            $itensDoPedido->save();
+            
+            $volume_final  += $somando_volume; // aqui é feito a soma das quantidades de cada volume ao final de cada loop e armazenada na variavel
+            $valor_final += $somando_valor; //aqui é feito a soma do valor do pedido de cado produto ao final de cada loop feito e armazenada na variavel
+
+        }
+
+        //Aqui é feito a edição na tabela Pedidos para a inserção do valor "solicitado" total e quantidade de volumes total do pedido 
+        $pedido->valor_liberado = $valor_final ;
+        $pedido->volume_liberado = $volume_final ;
+        $pedido->status = "Fechado" ;
+        $pedido->num_pedido_oggi = $request->pedidoOggi ;
+        $pedido->observacao = $request->observacao ;
+        $pedido->save();
+
+        return redirect()->route('pedidos');
     }
 
     public function deletePedido(Pedido $pedido)
