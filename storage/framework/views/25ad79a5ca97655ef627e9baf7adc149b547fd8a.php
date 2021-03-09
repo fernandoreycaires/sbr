@@ -5,8 +5,8 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <a href="<?php echo e(route('fechamentos.adicionar')); ?>" class="btn btn-primary"> <i class="fa fa-plus"> ADICIONAR</i> </a>
-                    <a href="<?php echo e(route('fechamentos.listar')); ?>" class="btn btn-primary"> <i class="fa fa-eye"> VISUALIZAR </i> </a>
+                    <a href="<?php echo e(route('fechamentos.adicionar')); ?>" class="btn btn-info pull-right"> <i class="fa fa-plus"> ADICIONAR</i> </a>
+                    <a href="<?php echo e(route('fechamentos.listar')); ?>" class="btn btn-info "> <i class="fa fa-eye"> VISUALIZAR </i> </a>
                 </div>
             </div>
             <br>

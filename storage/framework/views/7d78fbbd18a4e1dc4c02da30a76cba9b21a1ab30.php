@@ -22,8 +22,10 @@
                         <tr>
                             <th>Pedido</th>
                             <th>Status</th>
-                            <th>Qtd de Volumes</th>
+                            <th>Volumes Sol.</th>
                             <th>Valor Solicitado</th>
+                            <th>Volumes Lib.</th>
+                            <th>Valor Liberado</th>
                             <th>Dia / Hora</th>
                             <th>Numero Ped. Oggi</th>
                             <th>Visualizar</th>
@@ -43,6 +45,8 @@
                                 <td><span class="badge <?php echo e($status_cor); ?>"> <?php echo e($listaPedido->status); ?> </span></td>
                                 <td> <?php echo e($listaPedido->volume_solicitado); ?> Vol. </td>
                                 <td> R$ <?php echo e($listaPedido->valor_solicitado); ?> </td>
+                                <td> <?php echo e($listaPedido->volume_liberado); ?> Vol.</td>
+                                <td> R$ <?php echo e($listaPedido->valor_liberado); ?> </td>
                                 <td><?php echo e(date('d/m/Y - H:m:s', strtotime($listaPedido->created_at))); ?></td>
                                 <td> # <?php echo e($listaPedido->num_pedido_oggi); ?> </td>
                                 <td> <a href="<?php echo e(route('pedidos.visualizarPedido', ['pedido' => $listaPedido->id])); ?> "><i class="fa fa-eye text-primary"></i> </a> </td>
