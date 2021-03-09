@@ -84,7 +84,7 @@
                     @foreach ($linhas as $linha)
                     <div class="box box-gray">
                         <div class="box-body box-profile">
-                        <h3 class="profile-username text-center"> {{ $linha->linha }} - <b> R$ {{ $linha->preco }} <a href="{{ route('produtos.editLinha',['linha' => $linha->id  ]) }}"><i class="fa fa-eye text-success"></i></a> <a href="#" onclick="event.preventDefault(); document.getElementById('deletarLinha{{$linha->id }}').submit();"><i class="fa fa-close text-danger"></i></a> </b></h3>
+                        <h3 class="profile-username text-center "> {{ $linha->linha }} - <b> R$ {{ $linha->preco }} <a href="{{ route('produtos.editLinha',['linha' => $linha->id  ]) }}"><i class="fa fa-eye text-success pull-right"></i></a> <a href="#" onclick="event.preventDefault(); document.getElementById('deletarLinha{{$linha->id }}').submit();"><i class="fa fa-close text-danger pull-right"></i></a> </b></h3>
                             
                         <form id="deletarLinha{{$linha->id }}" action="{{route('produtos.delLinha', ['linha' => $linha->id ]) }}" method="post" style="display: none" >
                             @csrf

@@ -83,7 +83,10 @@ Route::get('/pedidos/visualizarpedidoPrint/{pedido}', 'Pedidos\\PedidosControlle
 Route::get('/produtos', 'Pedidos\\PedidosController@viewProdutos')->name('produtos'); //Cadastrar produtos
 Route::post('/produtos/inserirlinha','Pedidos\\PedidosController@inserirLinha')->name('produtos.inserirLinha');
 Route::post('/produtos/inserirproduto','Pedidos\\PedidosController@inserirProduto')->name('produtos.inserirProduto');
-Route::get('/produtos/{produto}', 'Pedidos\\PedidosController@editProdutos')->name('produtos.editProd'); //Editar produtos
-Route::get('/linha/{linha}', 'Pedidos\\PedidosController@editLinha')->name('produtos.editLinha'); //Editar Linhas de produtos
+Route::get('/produtos/{produto}', 'Pedidos\\PedidosController@editProdutos')->name('produtos.editProd'); //Tela de edição de produtos
+Route::put('/produtos/edit/{produto}', 'Pedidos\\PedidosController@editProdBanco')->name('produtos.editProdBanco'); //Rota de edição de produto no banco
+Route::get('/linha/{linha}', 'Pedidos\\PedidosController@editLinha')->name('produtos.editLinha'); //Tela de edição Linhas 
+Route::put('/linha/edit/{linha}', 'Pedidos\\PedidosController@editLinhaBanco')->name('produtos.editLinhaBanco'); //Rota de edição de linha no banco
 Route::delete('/produto/delete/{produto}', 'Pedidos\\PedidosController@delProd')->name('produtos.delProd');
 Route::delete('/linha/delete/{linha}', 'Pedidos\\PedidosController@delLinha')->name('produtos.delLinha'); 
+

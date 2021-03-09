@@ -74,6 +74,14 @@ class PedidosController extends Controller
         return view('pedidos.produtosedit', compact('user', 'uriAtual', 'produto', 'linhaProd'));
     }
 
+    public function editProdBanco(Sabor $produto, Request $request)
+    {
+        $produto->sabor = $request->prodNome;
+        $produto->save();
+                
+        return redirect()->route('produtos');
+    }
+
     public function editLinha(Linha $linha)
     {
         $user = Auth()->user();
@@ -83,6 +91,15 @@ class PedidosController extends Controller
         $produtos = $linha->sabor()->get();
         
         return view('pedidos.linhaedit', compact('user', 'uriAtual', 'linha', 'produtos' ));
+    }
+
+    public function editLinhaBanco(Linha $linha, Request $request)
+    {
+        $linha->linha = $request->linhaNome;
+        $linha->preco = $request->valor;
+        $linha->save();
+                
+        return redirect()->route('produtos');
     }
 
     public function delProd(Sabor $produto)
@@ -100,6 +117,8 @@ class PedidosController extends Controller
     }
 
     // PEDIDOS
+    //*************************************************************************************** */
+    //
 
     public function viewPedidos()
     {
