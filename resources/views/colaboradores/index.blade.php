@@ -12,11 +12,11 @@
                         <h3 class="box-title">Colaboradores</h3>
 
                         <div class="box-tools">
-                          <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+                          
                             <div class="input-group-btn ">
-                                <a href="{{ route('colaboradores.novo') }}" class="btn btn-primary "> <i class="fa fa-plus"> ADICIONAR</i> </a>
+                                <a href="{{ route('colaboradores.novo') }}" class="btn btn-info "> <i class="fa fa-plus"> ADICIONAR</i> </a>
                             </div>
-                          </div>
+                          
                         </div>
                       </div>
                       <!-- /.box-header -->

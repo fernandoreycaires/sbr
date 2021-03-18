@@ -61,7 +61,7 @@
                                 </div>
 
                                 <div class="box-footer">
-                                    <a href="<?php echo e(route('colaboradores')); ?>" class="btn btn-default">Cancel</a>
+                                    <a href="<?php echo e(route('colaboradores')); ?>" class="btn btn-default">Cancelar</a>
                                     <button type="submit" class="btn btn-info pull-right">Salvar</button>
                                 </div>
 
