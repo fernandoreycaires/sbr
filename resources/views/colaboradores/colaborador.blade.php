@@ -26,10 +26,10 @@
                                 <b>Estado Civil: </b> <a class="pull-right">{{ $colaborador->civil }}</a>
                             </li>
                             <li class="list-group-item">
-                                <b>CPF: </b> <a class="pull-right">{{ $colaborador->cpf }}</a>
+                                <b>CPF: </b> <a class="pull-right">{{ $cpf }}</a>
                             </li>
                             <li class="list-group-item">
-                                <b>RG: </b> <a class="pull-right">{{ $colaborador->rg }}</a>
+                                <b>RG: </b> <a class="pull-right">{{ $rg }}</a>
                             </li>
 
 

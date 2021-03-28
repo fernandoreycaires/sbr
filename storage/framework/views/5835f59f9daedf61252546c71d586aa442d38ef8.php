@@ -24,10 +24,10 @@
                                 <b>Estado Civil: </b> <a class="pull-right"><?php echo e($colaborador->civil); ?></a>
                             </li>
                             <li class="list-group-item">
-                                <b>CPF: </b> <a class="pull-right"><?php echo e($colaborador->cpf); ?></a>
+                                <b>CPF: </b> <a class="pull-right"><?php echo e($cpf); ?></a>
                             </li>
                             <li class="list-group-item">
-                                <b>RG: </b> <a class="pull-right"><?php echo e($colaborador->rg); ?></a>
+                                <b>RG: </b> <a class="pull-right"><?php echo e($rg); ?></a>
                             </li>
 
 
