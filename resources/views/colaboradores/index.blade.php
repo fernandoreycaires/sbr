@@ -33,13 +33,27 @@
                             </tr>
 
                             @foreach ($colaboradores as $colaborador)
+
+                            <?php
+                            //MODIFICANDO MODO DE EXIBIÇÃO DO "RG"
+                            $rgColab = $colaborador->rg;
+                            $rg = substr_replace($rgColab, '.', 2, 0);
+                            $rg = substr_replace($rg, '.', 6, 0);
+                            $rg = substr_replace($rg, '-', 10, 0);
+
+                            //MODIFICANDO MODO DE EXIBIÇÃO DO "CPF"
+                            $cpfColab = $colaborador->cpf;
+                            $cpf = substr_replace($cpfColab, '.', 3, 0);
+                            $cpf = substr_replace($cpf, '.', 7, 0);
+                            $cpf = substr_replace($cpf, '-', 11, 0);
+                            ?>
                             <tr>
                                 <td>{{ $colaborador->id }}</td>
                                 <td>{{ $colaborador->nome }}</td>
                                 <td>{{ floor((time() - strtotime($colaborador->nascimento))/31556926) }}</td>
                                 <td>{{ $colaborador->civil }}</td>
-                                <td>{{ $colaborador->rg }}</td>
-                                <td>{{ $colaborador->cpf }}</td>
+                                <td>{{ $rg }}</td>
+                                <td>{{ $cpf }}</td>
                                 <td><a href="{{ route('colaborador.dados',['colaborador' => $colaborador->id ]) }}"><i class="fa fa-eye text-success"></i></a></td>
                             </tr>
                             @endforeach
